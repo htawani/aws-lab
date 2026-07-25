@@ -15,7 +15,7 @@ Select Region:
 Create bucket >  
 Bucket type: **General purpose**  
 Bucket namespace:   
-Bucket name: **s3-list-read**   
+Bucket name: **s3-list-read-buck**   
 Object ownership: ACLs disabled   
 Block public access setting for this bucket: Block all public access   
 Bucket versioning: Disabled  
@@ -30,8 +30,22 @@ Create policy
 Select a service: **S3**  
 Actions allowed: List > All **and** Read > All  
 Resources: All > Next  
-Policy name: **s3-read-list-only** > Create policy  
+Policy name: **s3-list-read-pol** > Create policy  
 <br>
 **Read Permission:**  
 Policy is ec2 instance will only list out the AWS objects and get the object (download), ec2 instance will not allow to upload any file using this policy
+<br>
+
+**3. Create IAM Role**  
+Role > Create role  
+Select trusted entity: **AWS service**  
+Use case: **EC2** > Next  
+Filter by type: **Customer managed**  
+Select policy (attach the policy): **s3-list-read-pol** > Next   
+Role name: **ec2-s3-role** > Create role  
+<br>
+**Trust relationships**  
+Menas, the EC2 instance will only assume the role<br>
+--> **Trust policy is an Authentication the EC2 instance**  
+--> **Permission is your Authorization to access the S3 bucket**  
 <br>
