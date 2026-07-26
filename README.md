@@ -1,2 +1,1 @@
-# amazon-cloud
-Amazon Cloud
+# AWS Lab
